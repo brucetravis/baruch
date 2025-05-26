@@ -1,0 +1,20 @@
+.vision-and-mission{
+    padding: 2rem 1rem;
+}
+
+.vision-and-mission .img-fluid {
+    filter: brightness(60%);
+    transition: transform 0.3s ease;
+}
+
+.vision-and-mission .img-fluid:hover {
+    filter: brightness(80%);
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+
+.vision-and-mission h4 {
+    color: #ffd700;
+}
+

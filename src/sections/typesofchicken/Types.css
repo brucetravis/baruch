@@ -1,0 +1,75 @@
+.types-section {
+    /* background-color: #fef8f0; */
+    /* background-color: #d5e9d0; */
+    background-color: #f5f5dc;
+    padding: 20px;
+}
+
+.types-section .row {
+    padding: 20px;
+}
+
+
+.types-section .row .day-old {
+    background-image: url(../../images/day-old.jpg);
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    filter: brightness(60%);
+    height: 400px;
+    width: 400px;
+    transition: transform 0.5s ease, filter 1s ease;
+}
+
+.types-section .row .broiler {
+    background-image: url(../../images/broiler.jpg);
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    filter: brightness(60%);
+    height: 400px;
+    width: 400px;
+    transition: transform 0.5s ease, filter 1s ease;
+}
+
+.types-section .row .layer {
+    background-image: url(../../images/layer.jpg);
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    filter: brightness(60%);
+    height: 400px;
+    width: 400px;
+    transition: transform 0.5s ease, filter 1s ease;
+}
+
+
+.types-section .row .day-old:hover,
+.types-section .row .broiler:hover,
+.types-section .row .layer:hover {
+    font-size: 40px;
+    cursor: pointer;
+    transform: translateY(-15px);
+    filter: brightness(90%);
+}
+
+
+.types-section .row .day-old:hover .types-text,
+.types-section .row .broiler:hover .types-text,
+.types-section .row .layer:hover .types-text {
+    font-size: 40px;
+    cursor: pointer;
+    transform: translateY(-15px);
+}
+
+
+.types-section .types-text {
+    text-decoration: underline;
+    margin-top: 45vh;
+    font-size: 30px;
+    color: white;
+}
+
+
+
+

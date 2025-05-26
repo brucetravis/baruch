@@ -1,0 +1,26 @@
+.layers-section{
+    padding: 20px
+}
+
+.layers {
+    font-size: 35px;
+    color: #ffd700;
+    font-weight: 600;
+    /* text-transform: uppercase; */
+}
+
+
+.layers-image {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+    transition: transform 0.3s ease;  /* smooth transition */
+}
+
+.layers-image:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+    /* Optional: add a subtle shadow for more pop */
+    /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); */
+}

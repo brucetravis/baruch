@@ -1,0 +1,17 @@
+.hero-section  img{
+    object-fit: cover;
+    filter: brightness(50%);
+    /* background: linear-gradient(to bottom, green); */
+}
+
+.text-name {
+    padding-top: 45vh;
+}
+
+.baruch-name {
+    text-decoration: none;
+}
+
+.baruch-name:hover {
+    text-decoration: underline;
+}

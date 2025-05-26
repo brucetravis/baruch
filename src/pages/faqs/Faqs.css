@@ -1,0 +1,36 @@
+.faqs {
+    /* background-color: red; */
+    padding: 50px;
+    background-image: url;
+}
+
+.faqs-title {
+    color: #ffd700;
+}
+
+
+.drop-down-content {
+    margin-left: 85px;
+    border-bottom: 1px solid rgb(212, 210, 210);
+}
+
+.drop-down-answer {
+    margin-left: 6vw;
+}
+
+
+.dropdown-question:hover {
+    cursor: pointer;
+}
+
+.faq-img {
+    filter: brightness(70%);
+    transition: transform 0.5s ease;
+}
+
+.faq-img:hover {
+    filter: brightness(80%);
+    transform: scale(0.9);
+    cursor: pointer;
+}
+

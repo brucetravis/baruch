@@ -1,0 +1,42 @@
+.eggs-section {
+    padding: 20px;
+    background-color: #fef8f0;
+    /* background-color: #d5e9d0; */
+}
+
+.eggs {
+    font-size: 35px;
+    color: #ffd700;
+    font-weight: 600;
+    /* text-transform: uppercase; */
+}
+
+
+.eggs-section img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+    transition: transform 0.3s ease;  /* smooth transition */
+}
+
+.eggs-section img:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+    /* Optional: add a subtle shadow for more pop */
+    /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); */
+}
+
+
+.order-now-btn {
+  padding: 12px 40px;
+  background-color: #ffd700;
+  color: rgb(255, 251, 251);
+  text-decoration: none;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.order-now-btn:hover {
+  background-color: #ebca11;
+}
+

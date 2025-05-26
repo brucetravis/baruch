@@ -1,0 +1,27 @@
+.orders-section {
+    padding: 20px;
+    padding-top: 20vh;
+    /* background-color: #d5e9d0; */
+    background-color: #fef8f0;
+}
+
+.order-instructions {
+  background-color: #fff8e1;
+  border: 1px solid #ffd700;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+.order-instructions h2 {
+  color: #cc9900;
+}
+
+.order-instructions ol {
+  padding-left: 1.2rem;
+}
+
+.order-instructions li {
+  margin-bottom: 1rem;
+}

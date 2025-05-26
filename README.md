@@ -1,70 +1,219 @@
-# Getting Started with Create React App
+ // return clearInterval(interval) // this is cleaned up immediately and not after the image is unmounted
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+✅ Imports from Framer Motion — a popular animation library.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+motion: Lets you turn normal HTML elements (like <div>) into animated ones.
 
-### `npm run build`
+useAnimation: A hook that gives you full control over the animation — like starting or stopping it programmatically.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+useInView: A hook that detects if a component is visible (in view) in the browser viewport. Useful for scroll-based animations.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+useRef()	🎯 Targets a specific DOM element, like <div> or <section>.
+useInView()	👀 Watches that element to detect when it's in the viewport.
+useAnimation()	🎬 Gives you full manual control to start the animation (not automatic).
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 🔁 How They Work Together:
+useRef() points to your component (e.g. ref={ref} on a <motion.div>).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+useInView(ref) keeps watching that specific component.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+When inView === true, the useEffect() block starts the animation using controls.start(...).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+✅ useInView(ref, { once: true })
+This is a hook from Framer Motion that tells you whether the element you're referencing (with ref) is currently visible on the screen (i.e., in the user's viewport).
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🧠 Parameters Explained:
+1. ref
+This is the reference to a specific element you want to watch.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You defined it with useRef(null) just above this line.
 
-### Code Splitting
+For example, you're saying: “Watch this particular div — and tell me when it becomes visible.”
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. { once: true }
+This means: “Only trigger true the first time this element comes into view — after that, don't trigger again.”
 
-### Analyzing the Bundle Size
+This is useful for animations, so they only happen once (not every time you scroll up and down).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+📦 Final Meaning of the Line:
+You're asking Framer Motion:
+“Tell me when the element with this ref is visible on screen, and only notify me the first time it happens.”
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+if (inView) {
+  controls.start({ opacity: 1, y: 0 });
+}
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# So when inView becomes true, you trigger the animation once.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# ✅ What This Means for You
+You can wrap any component (text, images, sections, etc.) in your SlideInOnScroll like this:
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<SlideInOnScroll>
+  <section className="about-us">
+    <h2>About Us</h2>
+    <p>We deliver fresh chicken to your doorstep.</p>
+  </section>
+</SlideInOnScroll>
+
+
+const controls = useAnimation();
+
+✅ **Create animation controller**
+
+- This gives you **manual control** to start, stop, or update the animation.
+- You will use it to trigger the "slide in" animation only **when** the component is in view.
+
+---
+
+### ```js
+  useEffect(() => {
+    if (inView) {
+      controls.start({ y: 0, opacity: 1 });
+    }
+  }, [inView, controls]);
+
+
+🧠 Why This Matters:
+inView will change from false to true when the element scrolls into the viewport.
+
+controls is the animation instance that manages the start or stop of animations.
+
+
+
+
+# ✅ Run animation when component comes into view
+
+useEffect runs when inView or controls change.
+
+If inView is true, it triggers controls.start() to animate the component to:
+
+y: 0 → slide it to original position (was at y: 100 initially).
+
+opacity: 1 → make it fully visible.
+
+
+
+
+✅ **React Hooks**
+
+- `useEffect`: Runs code at specific points in a component's lifecycle (e.g. when it mounts or updates).
+- `useRef`: Lets you reference a DOM element or value across renders without re-rendering.
+
+
+
+✅ Component Declaration
+
+You're creating a reusable component called SlideInOnScroll.
+
+children is a special prop that allows you to pass nested content (e.g. JSX) into this component.
+
+
+const ref = useRef(null);
+
+
+✅ **Create a reference** to the HTML element.
+
+- `ref` will point to the DOM element you're animating.
+- It's used with `useInView` to check if this specific component is on-screen.
+
+---
+
+### ```js
+  const inView = useInView(ref, { once: true });
+
+
+✅ Detect if component is in view
+
+inView is true if the ref element is visible in the viewport.
+
+{ once: true } ensures the animation only runs once, not every time it scrolls into view.
+
+
+
+return (
+<motion.div
+ref={ref}
+initial={{ y: 100, opacity: 0 }}
+animate={controls}
+transition={{ duration: 0.8, ease: 'easeOut' }}
+>
+{children}
+</motion.div>
+);
+}
+
+
+✅ **Render the animated div**
+
+- `<motion.div>`: A special `div` that supports animation props.
+- `ref={ref}`: Attach your `ref` so that `useInView` can monitor its position.
+- `initial`: The starting animation state.  
+  - `y: 100`: Start 100 pixels lower (off-screen).
+  - `opacity: 0`: Start invisible.
+- `animate={controls}`: Tells it to animate using your manual control.
+- `transition`: Sets how the animation plays — here it lasts `0.8s` with a smooth ease-out curve.
+- `{children}`: This allows any content inside `<SlideInOnScroll>...</SlideInOnScroll>` to appear with the slide-in effect.
+
+---
+
+### ✅ **Summary: What This Component Does**
+
+`SlideInOnScroll`:
+- Watches when it scrolls into view.
+- When visible, it **animates from below (y: 100) to its original position (y: 0)**.
+- It **fades in** by going from `opacity: 0` to `opacity: 1`.
+- The animation **only runs once** when the component first enters view.
+- You can reuse it to animate any element:  
+  ```jsx
+  <SlideInOnScroll>
+    <h2>Welcome to My Site</h2>
+  </SlideInOnScroll>
+
+
+
+
+# Scroll Restoration
+<ScrollRestoration /> only works with:
+
+createBrowserRouter()
+
+RouterProvider
+
+# They are called data routers
+
+🧠 These two are data routers:
+createBrowserRouter()
+
+A function used to define routes with data loading (loader, action, etc.)
+
+Part of React Router's Data APIs (v6.4+)
+
+<RouterProvider />
+
+The component that provides the router created by createBrowserRouter() to your app.
+
+
+✅ How to Fix It
+Since you're using a basic setup, just remove <ScrollRestoration /> completely from your App.js and instead:
+
+✅ Use the ScrollToTop solution I gave you above — it's fully compatible with your setup and doesn’t depend on any data router.
+
+
+
+
+
+

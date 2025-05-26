@@ -1,0 +1,21 @@
+.story {
+    padding: 2rem 1rem;
+    background-color: #f5f5dc;
+}
+
+.story .img-fluid {
+    filter: brightness(60%);
+    transition: transform 0.3s ease;
+}
+
+.story .img-fluid:hover {
+    filter: brightness(80%);
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+
+.story h4 {
+    color: #ffd700;
+}
+

@@ -1,0 +1,17 @@
+.about-hero {
+    background-image: url(../../../images/chicken-feeding.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: brightness(85%);
+    width: 100%;
+    height: 70vh;
+    padding: 30vh;
+}
+
+.about-us-text {
+    font-size: 35px;
+    color: #ffd700;
+    font-weight: 600;
+    text-transform: uppercase;
+}
